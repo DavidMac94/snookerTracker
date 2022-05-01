@@ -12,5 +12,5 @@ public class SessionDTO {
     @NotNull
     private final Long drillId;
     @NotNull
-    private final List<Integer> scores;
+    private final List<Integer> results;
 }

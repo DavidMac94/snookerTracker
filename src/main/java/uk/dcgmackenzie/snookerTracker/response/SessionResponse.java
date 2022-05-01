@@ -1,16 +1,18 @@
-package uk.dcgmackenzie.snookerTracker.DTO;
+package uk.dcgmackenzie.snookerTracker.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public class ResultDTO {
+@Setter
+public class SessionResponse {
     @NotNull
-    private final List<Integer> scores;
+    List<Integer> results;
     @NotNull
-    private final Long sessionId;
+    Boolean isHighScore;
 }
