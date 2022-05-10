@@ -29,6 +29,9 @@ public class User {
     @NotNull
     @Size(min = 2)
     private String password;
+    @NotNull
+    private Boolean isVerified;
+    private String verificationCode;
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Drill> drills;

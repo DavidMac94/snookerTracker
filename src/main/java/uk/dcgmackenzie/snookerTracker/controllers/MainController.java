@@ -8,6 +8,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import uk.dcgmackenzie.snookerTracker.DTO.DrillDTO;
 import uk.dcgmackenzie.snookerTracker.DTO.SessionDTO;
+import uk.dcgmackenzie.snookerTracker.DTO.UserConfirmDTO;
+import uk.dcgmackenzie.snookerTracker.DTO.UserRegisterDTO;
 import uk.dcgmackenzie.snookerTracker.entities.*;
 import uk.dcgmackenzie.snookerTracker.response.SessionResponse;
 import uk.dcgmackenzie.snookerTracker.services.DrillService;
@@ -31,9 +33,15 @@ public class MainController {
 //        return ResponseEntity.ok().body(userService.getUsers());
 //    }
 
-    @PostMapping("/users")
-    public ResponseEntity<User> saveUser(@Validated @RequestBody User user) {
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+    
+    @PostMapping("/users/register")
+    public ResponseEntity<String> saveUser(@Validated @RequestBody UserRegisterDTO userRegisterDTO) {
+        return new ResponseEntity<>(userService.registerUser(userRegisterDTO), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/users/confirm")
+    public ResponseEntity<String> confirmUser(@Validated @RequestBody UserConfirmDTO userConfirmDTO) {
+        return new ResponseEntity<>(userService.confirmUser(userConfirmDTO), HttpStatus.OK);
     }
 
     @PostMapping("/drills")
